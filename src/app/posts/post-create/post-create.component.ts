@@ -7,9 +7,11 @@ import { Component } from '@angular/core';
     templateUrl: './post-create.component.html' // pointing to the proper .html file
 })
 export class PostCreateComponent {
-  // handles a post when "Save Post" is clicked
+  newPost= 'nothing';  // this is a property of the class
+  enteredValue = '';
+
   onAddPost() {
-    alert('Post added!');
+    this.newPost = this.enteredValue;
   }
 
 }
