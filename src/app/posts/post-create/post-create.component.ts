@@ -24,5 +24,6 @@ export class PostCreateComponent {
     }
     // creation of new post will signal a listener to do some action
     this.postsService.addPost(form.value.title, form.value.content);
+    form.resetForm();   // clears the forms and rests to normal state
   }
 }
