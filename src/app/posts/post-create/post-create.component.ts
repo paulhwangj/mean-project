@@ -1,17 +1,24 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 // attach the @Component() to a class that
 // marks it as a component that angular uses
 @Component({
     selector: 'app-post-create',// ESSENTIALLY A CUSTOM HTML ELEMENT
-    templateUrl: './post-create.component.html' // pointing to the proper .html file
+    templateUrl: './post-create.component.html', // pointing to the proper .html file
+    styleUrls: ['./post-create.component.css']
 })
 export class PostCreateComponent {
-  newPost= 'nothing';  // this is a property of the class
-  enteredValue = '';
+  enteredTitle = '';
+  enteredContent = '';
+  @Output() postCreated = new EventEmitter();
 
   onAddPost() {
-    this.newPost = this.enteredValue;
-  }
+    const post = {
+      title: this.enteredTitle,
+      content: this.enteredContent
+    }
 
+    // creation of new post will signal a listener to do some action
+    this.postCreated.emit(post);
+  }
 }
