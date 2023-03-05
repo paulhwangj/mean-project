@@ -1,4 +1,6 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { PostsService } from '../posts.service';
 
 // attach the @Component() to a class that
 // marks it as a component that angular uses
@@ -10,15 +12,17 @@ import { Component, EventEmitter, Output } from '@angular/core';
 export class PostCreateComponent {
   enteredTitle = '';
   enteredContent = '';
-  @Output() postCreated = new EventEmitter();
 
-  onAddPost() {
-    const post = {
-      title: this.enteredTitle,
-      content: this.enteredContent
+  // posts service is now injected here
+  constructor(public postsService: PostsService) {}
+
+  onAddPost(form: NgForm) {
+    // we are capable of doing this
+    // due to the parameter being a form
+    if (form.invalid) {
+      return;
     }
-
     // creation of new post will signal a listener to do some action
-    this.postCreated.emit(post);
+    this.postsService.addPost(form.value.title, form.value.content);
   }
 }
