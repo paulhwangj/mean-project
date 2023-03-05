@@ -1,27 +1,22 @@
 # MeanCourse
+--
+MeanCourse is a MEAN application that served to be an introduction to my learning of how to develop using the tech stack.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.1.
+The following course was used to build the application, click the image to check out the course page!  
+[![course description](https://i.imgur.com/fIXFol8.png)](https://www.udemy.com/course/angular-2-and-nodejs-the-practical-guide/?couponCode=D_0323)
 
-## Development server
+# What is MEAN?
+--
+![MEAN overview](https://i.imgur.com/z1Qho8o.png)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+# The Big Picture
+--
+![big picture overview](https://i.imgur.com/2v3wsUY.png)
+* **Angular** will be responsible for the front-end application (presentation/UI) which will be a Single-Page application.  
+* **Express/Node** will be responsible for the server-side, will be that one that handles the business logic, accesses the database, processes requests and responses, etc. Express is simply a Node framework that simplifies writing server-side code and logic.  
+* **MongoDB** will be responsible for serving as a database. MongoDB is a NoSQL, document-based database. NoSql databases are good when there isn't exact relationships among data.
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+# Further Notes
+--
+I have further notes that go into farther details on the corresponding Notion page. Click the image below to access that page if you wish to take a look as well.  
+[![notion page](https://i.imgur.com/5jn9PK2.png)](https://pauljhwang.notion.site/Building-First-MEAN-MongoDB-Express-js-AngularJS-Node-js-Application-894a9770a07f4a6e8524eeece9f2d060)
