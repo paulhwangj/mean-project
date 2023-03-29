@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-// essentially the event emitter
-import { Subject } from 'rxjs';
+import { Subject } from 'rxjs'; // essentially the event emitter
+import { HttpClient } from '@angular/common/http';
 
 import { Post } from './post.model';
 
@@ -10,9 +10,17 @@ export class PostsService {
   // Subject / Observable
   private postsUpdated = new Subject<Post[]>();
 
+  constructor(private http: HttpClient) {}
+
   // setter for posts
   getPosts() {
-    return [...this.posts];
+    // expects a path to our backend/server
+    this.http.get<{message: string, posts: Post[]}>('http://localhost:3000/api/posts')
+      .subscribe((postData) => {
+        // function that handles the response from the get request above
+        this.posts = postData.posts;
+        this.postsUpdated.next([...this.posts]);
+      });
   }
 
   // Subject / Observable
@@ -22,12 +30,14 @@ export class PostsService {
 
   // adding a new post
   addPost(title: string, content: string) {
-    const post: Post = {title: title, content: content};
-    this.posts.push(post); // adds the posts variable
+    const post: Post = {id: null, title: title, content: content};
+    this.http.post<{message: string}>('http://localhost:3000/api/posts', post)
+      .subscribe((responseData) => {
+        console.log(responseData.message);
 
-    // once we have updated by adding a new post to posts,
-    // we want that change reflected in the UI and this will do that
-    // the subject/observable is emitting data here!
-    this.postsUpdated.next([...this.posts]);
+        // only push new post to the local data if it actually succeeds
+        this.posts.push(post);
+        this.postsUpdated.next([...this.posts]);
+      });
   }
 }

@@ -20,7 +20,7 @@ export class PostListComponent implements OnInit, OnDestroy {
   // does basic intialization tasks
   ngOnInit(): void {
     // fetches the intiail list of posts
-    this.posts = this.postsService.getPosts();
+    this.postsService.getPosts();
 
     // Observer for the subject/observable
     this.postsSub = this.postsService.getPostUpdateListener()
